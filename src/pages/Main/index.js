@@ -21,18 +21,6 @@ import {
 } from './styles';
 
 export default class Main extends Component {
-  // eslint-disable-next-line react/sort-comp
-  static navigationOptions = {
-    title: 'Usuários',
-  };
-
-  // eslint-disable-next-line react/static-property-placement
-  static propTypes = {
-    navigation: PropTypes.shape({
-      navigate: PropTypes.func,
-    }).isRequired,
-  };
-
   state = {
     newUser: '',
     users: [],
@@ -86,6 +74,10 @@ export default class Main extends Component {
     navigation.navigate('User', { user });
   };
 
+  static navigationOptions = {
+    title: 'Usuários',
+  };
+
   render() {
     const { users, newUser, loading } = this.state;
 
@@ -129,3 +121,9 @@ export default class Main extends Component {
     );
   }
 }
+
+Main.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func,
+  }).isRequired,
+};

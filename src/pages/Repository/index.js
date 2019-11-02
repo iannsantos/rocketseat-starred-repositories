@@ -4,9 +4,9 @@ import WebView from 'react-native-webview';
 
 export default function Repository(props) {
   const { navigation } = props;
-  const { html_url } = navigation.getParam('repo');
+  const repository = navigation.getParam('repo');
 
-  return <WebView source={{ uri: html_url }} style={{ flex: 1 }} />;
+  return <WebView source={{ uri: repository.html_url }} style={{ flex: 1 }} />;
 }
 
 Repository.navigationOptions = ({ navigation }) => ({
@@ -15,8 +15,6 @@ Repository.navigationOptions = ({ navigation }) => ({
 
 Repository.propTypes = {
   navigation: propTypes.shape({
-    getParam: propTypes.shape({
-      html_url: propTypes.string,
-    }),
+    getParam: propTypes.func.isRequired,
   }).isRequired,
 };

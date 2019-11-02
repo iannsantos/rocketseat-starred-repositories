@@ -19,21 +19,10 @@ import {
   Center,
 } from './styles';
 
-// TODO:
-// Adicionar paginação (ao chegar no final da lista, carregar mais)
-// Ao clicar em algum repositório, abrir uma webview (react-native-webview)
-
 export default class User extends Component {
   static navigationOptions = ({ navigation }) => ({
     title: navigation.getParam('user').name,
   });
-
-  // eslint-disable-next-line react/static-property-placement
-  static propTypes = {
-    navigation: PropTypes.shape({
-      getParam: PropTypes.func,
-    }).isRequired,
-  };
 
   state = {
     stars: [],
@@ -79,7 +68,6 @@ export default class User extends Component {
   };
 
   handleNavigate = repo => {
-    console.tron.log(repo);
     const { navigation } = this.props;
     navigation.navigate('Repository', { repo });
   };
@@ -123,3 +111,10 @@ export default class User extends Component {
     );
   }
 }
+
+User.propTypes = {
+  navigation: PropTypes.shape({
+    getParam: PropTypes.func,
+    navigate: PropTypes.func,
+  }).isRequired,
+};
